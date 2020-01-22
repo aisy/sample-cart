@@ -39,7 +39,8 @@ function CardItem() {
 
 const stylesCard = makeStyles({
   card: {
-    maxWidth: 400,
+    width: 223,
+    // maxWidth: 204,
     marginBottom: 20,
   },
   media: {

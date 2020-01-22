@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import FilterItems from './commons/Home/FilterItems';
 import CardItem from './commons/Home/CardItem';
 
-function App() {
+const HomeLayout = (props) => {
+
+  const listItems = props.items;
+
+  useEffect(() => {
+    console.log(listItems)
+  }, [ listItems ]);
+
   return (
     <Container
       maxWidth={"lg"}
@@ -13,14 +20,16 @@ function App() {
     >
       <FilterItems />
       <Grid container spacing={2}>
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
-        <CardItem />
+        {
+          listItems.map(items => {
+            return (
+              <CardItem key={items.id} />
+            )
+          })
+        }
       </Grid>
     </Container>
   );
 }
 
-export default App;
+export default HomeLayout;

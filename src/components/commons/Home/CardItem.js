@@ -21,16 +21,12 @@ function CardItem() {
       <Card className={classes.card}>
         <div className={classes.dummy} />
         <CardContent>
-          <Typography gutterBottom variant={"subtitle1"}>
-            <Box fontWeight={600}>
-              {"Apple iPad 7 2019 / iPad 10.2 Inch Wifi Only 32GB Gold Grey Silver".substr(0, 20) + "..."}
-            </Box>
-          </Typography>
-          <Typography gutterBottom variant={"subtitle1"} className={classes.price}>
-            <Box fontWeight={700}>
-              {rupiahConvert(800000)}
-            </Box>
-          </Typography>
+          <Box fontWeight={"700"}>
+            {"Apple iPad 7 2019 / iPad 10.2 Inch Wifi Only 32GB Gold Grey Silver".substr(0, 20) + "..."}
+          </Box>
+          <Box fontWeight={"700"} className={classes.price}>
+            {rupiahConvert(800000)}
+          </Box>
         </CardContent>
       </Card>
     </Grid>
@@ -40,14 +36,10 @@ function CardItem() {
 const stylesCard = makeStyles({
   card: {
     width: 223,
-    // maxWidth: 204,
     marginBottom: 20,
   },
-  media: {
-    height: 140
-  },
   dummy: {
-    height: 140,
+    height: 240,
     backgroundColor: "#cfd8dc",
   },
   price: {

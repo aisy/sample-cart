@@ -5,8 +5,11 @@ import CardContent from '@material-ui/core/CardContent';
 import Box from '@material-ui/core/Box';
 import Grid from '@material-ui/core/Grid';
 
-function CardItem() {
+function CardItem(props) {
   const classes = stylesCard();
+
+  let price = props.price ? props.price : 800000;
+  let itemName = props.itemName ? props.itemName : "Item Name";
 
   const rupiahConvert = (value) => {
     let reverse = value.toString().split('').reverse().join(''),
@@ -15,16 +18,20 @@ function CardItem() {
     return "Rp. " + thousand;
   }
 
+  const nameConvert = (value) => {
+    return value.length >= 20 ? value.substr(0, 20) + "..." : value;
+  }
+
   return (
     <Grid item>
       <Card className={classes.card}>
         <div className={classes.dummy} />
         <CardContent>
           <Box fontWeight={"700"}>
-            {"Apple iPad 7 2019 / iPad 10.2 Inch Wifi Only 32GB Gold Grey Silver".substr(0, 20) + "..."}
+            {nameConvert(itemName)}
           </Box>
           <Box fontWeight={"700"} className={classes.price}>
-            {rupiahConvert(800000)}
+            {rupiahConvert(price)}
           </Box>
         </CardContent>
       </Card>

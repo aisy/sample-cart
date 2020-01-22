@@ -7,7 +7,7 @@ import MockData from './data/MOCK_DATA.json';
 
 function App() {
 
-  const listItems = MockData;
+  let listItems = MockData;
 
   return (
     <>

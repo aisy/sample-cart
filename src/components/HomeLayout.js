@@ -10,7 +10,7 @@ function App() {
       maxWidth={"lg"}
       style={{ padding: 50 }}
     >
-      <Grid container spacing={5}>
+      <Grid container spacing={2}>
         <CardItem />
         <CardItem />
         <CardItem />

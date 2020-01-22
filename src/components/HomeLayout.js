@@ -2,7 +2,8 @@ import React from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
-import CardItem from './commons/CardItem';
+import FilterItems from './commons/Home/FilterItems';
+import CardItem from './commons/Home/CardItem';
 
 function App() {
   return (
@@ -10,8 +11,8 @@ function App() {
       maxWidth={"lg"}
       style={{ padding: 50 }}
     >
+      <FilterItems />
       <Grid container spacing={2}>
-        <CardItem />
         <CardItem />
         <CardItem />
         <CardItem />

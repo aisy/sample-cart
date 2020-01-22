@@ -1,9 +1,11 @@
 import React from 'react';
 
+import MockData from './data/MOCK_DATA.json';
+
 import AppBarWeb from './components/commons/AppBarWeb';
 import HomeLayout from './components/HomeLayout';
 
-import MockData from './data/MOCK_DATA.json';
+import { FilterPriceProvider } from './contexts/FilterPrice_Context';
 
 function App() {
 
@@ -11,10 +13,12 @@ function App() {
 
   return (
     <>
-      <AppBarWeb />
-      <HomeLayout
-        items={listItems}
-      />
+      <FilterPriceProvider>
+        <AppBarWeb />
+        <HomeLayout
+          items={listItems}
+        />
+      </FilterPriceProvider>
     </>
   );
 }

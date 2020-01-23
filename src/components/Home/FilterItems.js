@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -10,7 +10,21 @@ function FilterItems() {
   const [ filteredBy, setfilteredBy ] = useState("sesuai");
 
   const handleChange = event => {
-    setfilteredBy(event.target.value)
+
+    let valueHandle = event.target.value;
+    setfilteredBy(valueHandle);
+
+    // sorting low to high
+    if (valueHandle === "harga-rendah") {
+      console.warn("harga rendah");
+      let lowToHigh = filteredItem.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+      console.log(lowToHigh);
+      setFilteredItem(lowToHigh);
+    }
+    // sorting high to low 
+    else if (valueHandle === "harga-tinggi") {
+      console.warn("harga tinggi");
+    }
   }
 
   return (

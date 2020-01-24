@@ -14,7 +14,6 @@ function LoadingPageBar() {
 
 const styles = makeStyles({
   layoutLoading: {
-    height: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center"

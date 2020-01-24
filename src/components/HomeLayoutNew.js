@@ -26,6 +26,7 @@ const HomeLayout = (props) => {
         console.warn(error)
       }
     }
+
     setData();
   }, []);
 
@@ -49,14 +50,14 @@ const HomeLayout = (props) => {
   );
 
   return (
-    <div
+    <Container
+      maxWidth={"lg"}
       style={{ padding: 50, height: "100%" }}
     >
-      {/* {
-        loading ? <CircularProgress /> : <ThePage />
-      } */}
-      <LoadingPageBar />
-    </div>
+      {
+        loading ? <LoadingPageBar /> : <ThePage />
+      }
+    </Container>
   );
 }
 

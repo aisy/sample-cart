@@ -5,33 +5,24 @@ import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/core';
 import Box from '@material-ui/core/Box';
 
+import { FilterPriceContext } from '../../contexts/FilterPrice_Context';
+
 function FilterItems() {
   const classes = styles();
   const [ filteredBy, setfilteredBy ] = useState("sesuai");
+  let { filteredItem, setFilteredItem, } = useContext(FilterPriceContext)
 
   const handleChange = event => {
-
     let valueHandle = event.target.value;
     setfilteredBy(valueHandle);
-
-    // sorting low to high
-    if (valueHandle === "harga-rendah") {
-      console.warn("harga rendah");
-      let lowToHigh = filteredItem.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-      console.log(lowToHigh);
-      setFilteredItem(lowToHigh);
-    }
-    // sorting high to low 
-    else if (valueHandle === "harga-tinggi") {
-      console.warn("harga tinggi");
-    }
+    setFilteredItem(valueHandle);
   }
 
   return (
     <div className={classes.formLayout}>
       <Box fontWeight={"600"} fontSize={18} className={classes.textLayout}>
         Urutkan:
-        </Box>
+      </Box>
       <FormControl
         variant={"outlined"}
         className={classes.formControl}

@@ -13,15 +13,14 @@ const HomeLayout = (props) => {
   let { setFilteredItem, filteredItem } = useContext(FilterPriceContext);
   const [ loading, setLoading ] = useState(true);
 
-  const setData = async () => {
-    let listItems = await props.items;
-    setFilteredItem(listItems);
-    setLoading(false);
-  }
-
   useEffect(() => {
-    setData();
-    console.log(filteredItem);
+    const setData = async () => {
+      let listItems = await fetch("https://api.myjson.com/bins/cnwgq");
+      let items = await listItems.json();
+      setFilteredItem(listItems.data);
+      setLoading(false);
+    }
+
   }, [ filteredItem ]);
 
   const ThePage = () => (

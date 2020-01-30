@@ -1,41 +1,25 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useContext, useState, useRef } from 'react';
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 import FilterItems from './Home/FilterItems';
 import CardItem from './Home/CardItem';
-import LoadingPageBar from './commons/LoadingPageBar';
 
 import { FilterPriceContext } from '../contexts/FilterPrice_Context';
 
 const HomeLayout = (props) => {
 
-  let { setFilteredItem, filteredItem } = useContext(FilterPriceContext);
-  let [ dataProducts, setDataProducts ] = useState({});
-  // let [ filteredPrice, setFilteredPrice ] = useState();
-  const [ loading, setLoading ] = useState(true);
+  let { filteredItem } = useContext(FilterPriceContext);
 
-  useEffect(() => {
-    const setData = async () => {
-      try {
-        let listItems = await fetch("https://api.myjson.com/bins/cnwgq");
-        let items = await listItems.json();
-        setDataProducts(items.data);
-        setLoading(false);
-      } catch (error) {
-        console.warn(error)
-      }
-    }
-
-    setData();
-  }, []);
-
-  const ThePage = () => (
-    <div>
+  return (
+    <Container
+      maxWidth={"lg"}
+      style={{ padding: 50, height: "100%" }}
+    >
       <FilterItems />
       <Grid container spacing={2}>
         {
-          dataProducts.map(items => {
+          filteredItem.map(items => {
             return (
               <CardItem
                 key={items.id}
@@ -46,17 +30,6 @@ const HomeLayout = (props) => {
           })
         }
       </Grid>
-    </div>
-  );
-
-  return (
-    <Container
-      maxWidth={"lg"}
-      style={{ padding: 50, height: "100%" }}
-    >
-      {
-        loading ? <LoadingPageBar /> : <ThePage />
-      }
     </Container>
   );
 }

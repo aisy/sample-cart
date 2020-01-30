@@ -10,12 +10,24 @@ import { FilterPriceContext } from '../../contexts/FilterPrice_Context';
 function FilterItems() {
   const classes = styles();
   const [ filteredBy, setfilteredBy ] = useState("sesuai");
-  let { filteredItem, setFilteredItem, } = useContext(FilterPriceContext)
+  const { filteredItem, setFilteredItem, } = useContext(FilterPriceContext)
 
   const handleChange = event => {
     let valueHandle = event.target.value;
+    let sorted = {};
+
+    if (valueHandle === "harga-rendah") {
+      sorted = [ ...filteredItem ].sort((a, b) => {
+        return a.price - b.price;
+      });
+    } else if (valueHandle === "harga-tinggi") {
+      sorted = [ ...filteredItem ].sort((a, b) => {
+        return b.price - a.price;
+      });
+    }
+
+    setFilteredItem(sorted);
     setfilteredBy(valueHandle);
-    setFilteredItem(valueHandle);
   }
 
   return (

@@ -24,6 +24,8 @@ function FilterItems() {
       sorted = [ ...filteredItem ].sort((a, b) => {
         return b.price - a.price;
       });
+    } else {
+      sorted = filteredItem;
     }
 
     setFilteredItem(sorted);
